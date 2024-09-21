@@ -4,6 +4,8 @@ name: Daily Stock Report
 on:
   schedule:
     - cron: '0 9 * * *'  # Runs at 9:00 AM UTC every day
+  workflow_dispatch:      # This enables the manual trigger
+
 
 jobs:
   build:
