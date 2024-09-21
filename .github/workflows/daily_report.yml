@@ -1,0 +1,39 @@
+name: Daily Stock Report
+
+# This tells GitHub Actions to trigger the workflow at 9 AM every day
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs at 9:00 AM UTC every day
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install ffn pandas matplotlib
+
+      # Step 4: Run the Python script to generate CSV and plot
+      - name: Run generate_report.py
+        run: python generate_report.py
+
+      # Step 5: Upload CSV and PNG files as artifacts
+      - name: Upload CSV and plot as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: stock-data-reports
+          path: |
+            *.csv
+            *.png
