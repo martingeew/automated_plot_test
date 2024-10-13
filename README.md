@@ -1,5 +1,10 @@
 # automated_plot_test
 
+This project is a demo of how to automate python scripts with Windows Task Scheduler and Gthub Actions.
+The plot below is updated daily with the script.
+
+![Final plott](https://github.com/martingeew/automated_plot_test/blob/main/stock_plot_2024-10-13_13-15-06.png?raw=true)
+
 ## Instructions to Set Up and Run the Project with Windows Task Scheduler
 
 ### Step 1: Clone or Download the Project
