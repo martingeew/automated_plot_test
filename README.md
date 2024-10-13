@@ -15,7 +15,7 @@ This project includes a `.bat` file that helps automate the process of activatin
    - The file is located in the root directory of the project.
 
 2. **Update the Project Path**:
-   - Open the `.bat` file in any text editor (such as Notepad).
+   - Open the `.bat` file in any text editor or code editor.
    - Replace `C:\path\to\your\project` with the actual path where you saved the project.
 
 3. **Modify These Paths in the `.bat` File**:
