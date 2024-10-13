@@ -21,7 +21,7 @@ def plot_all_columns(df):
     on the left, right, and top.
 
     Parameters:
-    df (pd.DataFrame): DataFrame with columns ['nvda', 'msft', 'googl', 'amzn', 'aapl', 'meta'] and DatetimeIndex as index.
+    df (pd.DataFrame): DataFrame with float columns and DatetimeIndex as index.
     """
     # Create figure and axis
     fig, ax = plt.subplots(
@@ -71,13 +71,11 @@ def plot_all_columns(df):
 
     ax.tick_params(axis="y", which="both", labelright=True, right=True)
 
-    # Remove the left, right, and top spines (keep bottom spine if needed)
+    # Remove the left, right, and top spines
     ax.spines["left"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["top"].set_visible(False)
-    ax.spines["bottom"].set_color(
-        "white"
-    )  # Keep bottom spine and make it white for visibility
+    ax.spines["bottom"].set_color("white")
 
     # Adjust layout
     plt.tight_layout()
@@ -86,7 +84,7 @@ def plot_all_columns(df):
     return fig, ax
 
 
-# Assuming `data_rebase` is your DataFrame
+# Create the fig object
 fig, ax = plot_all_columns(data_rebase)
 
 # Step 4: Save pandas dataframe as CSV with a timestamp and Save the plot as a PNG with a timestamp in the filename
@@ -98,4 +96,3 @@ fig.savefig(png_filename, dpi=300)  # Save with high DPI for better quality
 
 print(f"Data saved to {csv_filename}")
 print(f"Plot saved to {png_filename}")
-
