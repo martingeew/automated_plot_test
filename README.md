@@ -11,8 +11,8 @@ This project includes a `.bat` file that helps automate the process of activatin
 
 #### Instructions to Update the `.bat` File:
 
-1. **Locate the `.bat` file**:
-   - The file is located in the root directory of the project (e.g., `run_project.bat`).
+1. **Locate the `schedule.bat` file**:
+   - The file is located in the root directory of the project.
 
 2. **Update the Project Path**:
    - Open the `.bat` file in any text editor (such as Notepad).
