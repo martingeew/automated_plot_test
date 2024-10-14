@@ -3,17 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-# Get current timestamp
-timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-# Step 1: Retrieve data using ffn
-data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
-
-# Step 2: Rebase data
-data_rebase = data.rebase()
-
-
-# Step 3: Generate plot
+# Function for generating the plot
 def plot_all_columns(df):
     """
     Plots all columns from the DataFrame in a single chart using Matplotlib,
@@ -84,7 +75,16 @@ def plot_all_columns(df):
     return fig, ax
 
 
-# Create the fig object
+# Get current timestamp
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+# Step 1: Retrieve data using ffn
+data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
+
+# Step 2: Rebase data
+data_rebase = data.rebase()
+
+# Step 3: Generate plot
 fig, ax = plot_all_columns(data_rebase)
 
 # Step 4: Save pandas dataframe as CSV with a timestamp and Save the plot as a PNG with a timestamp in the filename
