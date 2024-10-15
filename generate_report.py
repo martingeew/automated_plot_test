@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 # Function for generating the plot
-def plot_all_columns(df):
+def plot_stock_timeseries(df):
     """
     Plots all columns from the DataFrame in a single chart using Matplotlib,
     with a dark theme, no axis labels, horizontal grid lines, and no spines
@@ -75,9 +75,6 @@ def plot_all_columns(df):
     return fig, ax
 
 
-# Get current timestamp
-timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
 # Step 1: Retrieve data using ffn
 data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
 
@@ -85,9 +82,10 @@ data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
 data_rebase = data.rebase()
 
 # Step 3: Generate plot
-fig, ax = plot_all_columns(data_rebase)
+fig, ax = plot_stock_timeseries(data_rebase)
 
-# Step 4: Save pandas dataframe as CSV with a timestamp and Save the plot as a PNG with a timestamp in the filename
+# Step 4: Save pandas dataframe as csv and the plot as a PNG
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 csv_filename = f"stock_data_{timestamp}.csv"
 data.to_csv(csv_filename)
 
