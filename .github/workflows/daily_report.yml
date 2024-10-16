@@ -3,13 +3,15 @@ name: Daily Stock Report
 # This tells GitHub Actions to trigger the workflow at 9 AM every day
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs at 9:00 AM UTC every day
+    - cron: '0 21 * * *'  # Runs at 9:00 AM UTC every day
   workflow_dispatch:      # This enables the manual trigger
+  env:
+  TZ: Europe/Berlin
 
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Linux operating system as runner envrionment
 
     steps:
       # Step 1: Check out the repository
