@@ -5,6 +5,7 @@ on:
   schedule:
     - cron: '0 21 * * *'  # Runs at 9:00 AM UTC every day
   workflow_dispatch:      # This enables the manual trigger
+  
 env:
   TZ: Europe/Berlin
 
