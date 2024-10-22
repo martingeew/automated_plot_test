@@ -76,7 +76,18 @@ def plot_stock_timeseries(df):
 
 
 # Step 1: Retrieve data using ffn
-data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
+try:
+    data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
+    # Check if the data is empty or invalid
+    if data.empty:
+        print("No data was returned. Check the ticker symbols or date range.")
+    else:
+        df = pd.DataFrame(data)
+        print(df)
+except ValueError as ve:
+    print(f"ValueError occurred: {ve}")
+except Exception as e:
+    print(f"An error occurred: {e}")
 
 # Step 2: Rebase data
 data_rebase = data.rebase()
