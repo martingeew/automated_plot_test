@@ -6,10 +6,11 @@ on:
     - cron: '0 7 * * *'  # Runs at 09:00 AM CET (UTC+2) every day
   workflow_dispatch:      # This enables the manual trigger
 
-
 jobs:
   build:
-    runs-on: ubuntu-latest # Linux operating system as runner envrionment
+    runs-on: ubuntu-latest # Linux operating system as runner environment
+    permissions:
+      contents: write     # Add permission to write to repository
 
     steps:
       # Step 1: Check out the repository
@@ -31,7 +32,16 @@ jobs:
       - name: Run generate_report.py
         run: python generate_report.py
 
-      # Step 5: Upload CSV and PNG files as artifacts
+      # Step 5: Configure Git and commit changes
+      - name: Configure Git and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add *.csv *.png
+          git commit -m "Update stock data and plot $(date +'%Y-%m-%d')"
+          git push
+
+      # Step 6: Upload CSV and PNG files as artifacts (as backup)
       - name: Upload CSV and plot as artifacts
         uses: actions/upload-artifact@v4
         with:
