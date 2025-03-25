@@ -20,7 +20,6 @@ print(f"Last updated: {current_time}")
 
 ```{python}
 #| label: fig-Tech-Stocks
-#| fig-full-width: true
 
 import ffn
 import pandas as pd
@@ -83,10 +82,6 @@ def plot_stock_timeseries_interactive(df):
 
     # Return the figure
     return fig
-
-
-# Step 1: Retrieve data using ffn
-#data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
 
 data = pd.read_csv(
     "data/stock_data_2025-03-25_07-23-39.csv", index_col=0, parse_dates=True
