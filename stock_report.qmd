@@ -83,9 +83,7 @@ def plot_stock_timeseries_interactive(df):
     # Return the figure
     return fig
 
-data = pd.read_csv(
-    "data/stock_data_2025-03-25_07-23-39.csv", index_col=0, parse_dates=True
-)
+data = ffn.get("nvda,msft,googl,amzn,aapl,meta", start="2023-01-01")
 
 # Step 2: Rebase data
 data_rebase = data.rebase()
