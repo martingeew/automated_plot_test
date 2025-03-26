@@ -27,6 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install ffn pandas matplotlib
+          pip install jupyter notebook nbformat pyyaml ipykernel
 
       # Step 4: Run the Python script to generate CSV and plot
       - name: Run generate_report.py
